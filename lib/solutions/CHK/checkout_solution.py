@@ -25,7 +25,16 @@ def checkout(skus):
 
     price = 0
 
-    for product, count in 
+    for product, count in products.items():
+        if product in DEALS:
+            deal_num, deal_price = DEALS[product]
 
-    raise NotImplementedError()
+            if count > deal_num:
+                price += (count // deal_num) * deal_price
+                count -= count // deal_num
+
+        price += PRICE_TABLE[product] * count
+
+    return price
+
 
