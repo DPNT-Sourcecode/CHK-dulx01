@@ -118,7 +118,13 @@ def checkout(skus):
             price += deals * group_deal_price
             remove_products = deals * group_count
 
-
+            # remove the products from the most expensive one, to save customer the most money possible
+            while remove_products > 0:
+                for product in group_products:
+                    if products.get(product, 0) > 0:
+                        products[product] -= 1
+                        remove_products -= 1
+                        break
 
     for product, count in products.items():
         if product in DEALS:
@@ -131,5 +137,6 @@ def checkout(skus):
         price += PRICE_TABLE[product] * count
 
     return price
+
 
 

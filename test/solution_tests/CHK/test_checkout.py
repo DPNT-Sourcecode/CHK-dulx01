@@ -59,3 +59,15 @@ def test_freebies_f():
     assert checkout_solution.checkout("AFFFFFFF") == 100
     assert checkout_solution.checkout("AFFFFFFFF") == 110
     assert checkout_solution.checkout("AFFFFFFFFF") == 110
+
+
+def test_group_deal():
+    assert checkout_solution.checkout("ST") == 40
+    assert checkout_solution.checkout("STY") == 45
+    assert checkout_solution.checkout("STYST") == 85
+    assert checkout_solution.checkout("STYSTY") == 90
+
+    # the more expensive products are selected in deal with priority
+    assert checkout_solution.checkout("STYZ") == 65
+    assert checkout_solution.checkout("STXZ") == 62
+
