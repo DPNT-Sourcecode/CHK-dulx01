@@ -6,7 +6,7 @@ from solutions.CHK import checkout_solution
 def test_invalid_inputs():
     assert checkout_solution.checkout(0) == -1
     assert checkout_solution.checkout(object) == -1
-    assert checkout_solution.checkout("ABCDEZ") == -1
+    assert checkout_solution.checkout("ABCDE1") == -1
 
 
 def test_a_deal():
@@ -59,4 +59,5 @@ def test_freebies_f():
     assert checkout_solution.checkout("AFFFFFFF") == 100
     assert checkout_solution.checkout("AFFFFFFFF") == 110
     assert checkout_solution.checkout("AFFFFFFFFF") == 110
+
 
