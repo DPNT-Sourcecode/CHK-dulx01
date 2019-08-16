@@ -26,15 +26,21 @@ def checkout(skus):
     price = 0
 
     for product, count in products.items():
+        print(product, count)
         if product in DEALS:
             deal_num, deal_price = DEALS[product]
 
-            if count > deal_num:
+            print(deal_num, deal_price)
+
+            if count >= deal_num:
                 price += (count // deal_num) * deal_price
                 count -= count // deal_num
 
         price += PRICE_TABLE[product] * count
 
+    print(price)
+
     return price
+
 
 
