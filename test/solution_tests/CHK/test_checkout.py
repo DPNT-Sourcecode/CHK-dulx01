@@ -1,3 +1,5 @@
+import random
+
 from solutions.CHK import checkout_solution
 
 
@@ -15,4 +17,7 @@ def test_valid_inputs():
     assert checkout_solution.checkout("AAAAABCD") == 295
     assert checkout_solution.checkout("AAAAAABCD") == 325
     assert checkout_solution.checkout("AAAAAABBCD") == 340
-
+    assert checkout_solution.checkout("AAAAAABBBCD") == 370
+    assert checkout_solution.checkout("AAAAAABBBBCD") == 385
+    assert checkout_solution.checkout("AAAAAABBBBCDD") == 400
+    assert checkout_solution.checkout("".join(random.shuffle("AAAAAABBBBCDD"))) == 400

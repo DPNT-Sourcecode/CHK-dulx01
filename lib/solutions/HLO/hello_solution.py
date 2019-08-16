@@ -7,4 +7,3 @@ def hello(friend_name):
         raise ValueError("Invalid input")
 
     return f"Hello, {friend_name}!"
-
