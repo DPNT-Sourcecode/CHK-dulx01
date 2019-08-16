@@ -6,6 +6,7 @@ PRICE_TABLE = {
     "C": 20,
     "D": 15,
     "E": 40,
+    "F": 10,
 }
 
 DEALS = {
@@ -21,6 +22,9 @@ DEALS = {
 FREEBIES = {
     "E": [
         (2, "B", 1),  # for 2E get 1B for free
+    ],
+    "F": [
+        (2, "F", 1),
     ]
 }
 
@@ -41,8 +45,10 @@ def checkout(skus):
         if freebie_product in products:
             count = products[freebie_product]
             for deal_count, what, how_many in freebie_values:
+                required_count = deal_count if freebie_product != what else deal_count + how_many
+
                 if count >= deal_count:
-                    freebie_deals = count // deal_count
+                    freebie_deals = count // required_count
                     free_units = freebie_deals * how_many
 
                     if what in products:
@@ -59,3 +65,4 @@ def checkout(skus):
         price += PRICE_TABLE[product] * count
 
     return price
+
