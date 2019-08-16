@@ -18,7 +18,11 @@ DEALS = {
     ],
 }
 
-FREEBEE
+FREEBIES = {
+    "E": [
+        (2, "B", 1),  # for 2E get 1B for free
+    ]
+}
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -33,6 +37,17 @@ def checkout(skus):
 
     price = 0
 
+    for freebie_product, freebie_values in FREEBIES.items():
+        if freebie_product in products:
+            count = products[freebie_product]
+            for deal_count, what, how_many in freebie_values:
+                if count > deal_count:
+                    freebie_deals = count // deal_count
+                    free_units = freebie_deals * how_many
+
+                    if what in products:
+                        products[what] = max(0, products[what] - free_units)
+
     for product, count in products.items():
         if product in DEALS:
             for deal_num, deal_price in DEALS[product]:
@@ -44,5 +59,6 @@ def checkout(skus):
         price += PRICE_TABLE[product] * count
 
     return price
+
 
 

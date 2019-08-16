@@ -9,10 +9,7 @@ def test_invalid_inputs():
     assert checkout_solution.checkout("ABCDEF") == -1
 
 
-def test_valid_inputs():
-    assert checkout_solution.checkout("ABCD") == 115
-    assert checkout_solution.checkout("ABCDE") == 155
-
+def test_a_deal():
     assert checkout_solution.checkout("A") == 50
     assert checkout_solution.checkout("A" * 2) == 100
     assert checkout_solution.checkout("A" * 3) == 130
@@ -25,6 +22,10 @@ def test_valid_inputs():
     assert checkout_solution.checkout("A" * 13) == 530
 
 
+def test_valid_inputs():
+    assert checkout_solution.checkout("ABCD") == 115
+    assert checkout_solution.checkout("ABCDE") == 155
+
     assert checkout_solution.checkout("AABCD") == 165
     assert checkout_solution.checkout("AABBCD") == 180
     assert checkout_solution.checkout("AABBBCD") == 210
@@ -35,6 +36,13 @@ def test_valid_inputs():
     random.shuffle(x)
 
     assert checkout_solution.checkout("".join(x)) == 240
+
+
+def test_freebies():
+    assert checkout_solution.checkout("ABCDE") == 155
+    assert checkout_solution.checkout("ABCDEE") == 165
+    assert checkout_solution.checkout("ACDEE") == 165
+
 
 
 
