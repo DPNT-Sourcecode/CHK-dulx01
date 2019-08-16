@@ -5,10 +5,14 @@ PRICE_TABLE = {
     "B": 30,
     "C": 20,
     "D": 15,
+    "E": 40,
 }
 
 DEALS = {
-    "A": (3, 130),
+    "A": [
+        (3, 130),
+        (5, 200),
+    ],
     "B": (2, 45),
 }
 
@@ -27,13 +31,13 @@ def checkout(skus):
 
     for product, count in products.items():
         if product in DEALS:
-            deal_num, deal_price = DEALS[product]
-
-            if count >= deal_num:
-                deals = count // deal_num
-                price += deals * deal_price
-                count -= deals * deal_num
+            for deal_num, deal_price in DEALS[product]:
+                if count >= deal_num:
+                    deals = count // deal_num
+                    price += deals * deal_price
+                    count -= deals * deal_num
 
         price += PRICE_TABLE[product] * count
 
     return price
+
