@@ -59,5 +59,3 @@ def test_freebies_f():
     assert checkout_solution.checkout("AFFFFFFF") == 100
     assert checkout_solution.checkout("AFFFFFFFF") == 110
     assert checkout_solution.checkout("AFFFFFFFFF") == 110
-
-
