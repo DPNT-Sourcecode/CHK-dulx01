@@ -3,4 +3,8 @@
 # noinspection PyUnusedLocal
 # friend_name = unicode string
 def hello(friend_name):
-    raise NotImplementedError()
+    if not isinstance(friend_name, str):
+        raise ValueError("Invalid input")
+
+    return f"Hello, {friend_name}!"
+
