@@ -10,11 +10,15 @@ PRICE_TABLE = {
 
 DEALS = {
     "A": [
-        (3, 130),
         (5, 200),
+        (3, 130),
     ],
-    "B": (2, 45),
+    "B": [
+        (2, 45)
+    ],
 }
+
+FREEBEE
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -40,4 +44,5 @@ def checkout(skus):
         price += PRICE_TABLE[product] * count
 
     return price
+
 

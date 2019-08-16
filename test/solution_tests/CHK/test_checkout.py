@@ -21,21 +21,20 @@ def test_valid_inputs():
     assert checkout_solution.checkout("A" * 6) == 250
     assert checkout_solution.checkout("A" * 7) == 300
     assert checkout_solution.checkout("A" * 8) == 330
+    assert checkout_solution.checkout("A" * 10) == 400
+    assert checkout_solution.checkout("A" * 13) == 530
 
 
-    # assert checkout_solution.checkout("AABCD") == 165
-    # assert checkout_solution.checkout("AAABCD") == 195
-    # assert checkout_solution.checkout("AAAABCD") == 245
-    # assert checkout_solution.checkout("AAAAABCD") == 295
-    # assert checkout_solution.checkout("AAAAAABCD") == 325
-    # assert checkout_solution.checkout("AAAAAABBCD") == 340
-    # assert checkout_solution.checkout("AAAAAABBBCD") == 370
-    # assert checkout_solution.checkout("AAAAAABBBBCD") == 385
-    # assert checkout_solution.checkout("AAAAAABBBBCDD") == 400
-    #
-    # x = list("AAAAAABBBBCDD")
-    # random.shuffle(x)
-    #
-    # assert checkout_solution.checkout("".join(x)) == 400
+    assert checkout_solution.checkout("AABCD") == 165
+    assert checkout_solution.checkout("AABBCD") == 180
+    assert checkout_solution.checkout("AABBBCD") == 210
+    assert checkout_solution.checkout("AABBBBCD") == 225
+    assert checkout_solution.checkout("AABBBBCDD") == 240
+
+    x = list("AABBBBCDD")
+    random.shuffle(x)
+
+    assert checkout_solution.checkout("".join(x)) == 240
+
 
 
