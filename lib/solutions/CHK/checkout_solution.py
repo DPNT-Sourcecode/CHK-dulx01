@@ -41,7 +41,7 @@ def checkout(skus):
         if freebie_product in products:
             count = products[freebie_product]
             for deal_count, what, how_many in freebie_values:
-                if count > deal_count:
+                if count >= deal_count:
                     freebie_deals = count // deal_count
                     free_units = freebie_deals * how_many
 
@@ -59,6 +59,7 @@ def checkout(skus):
         price += PRICE_TABLE[product] * count
 
     return price
+
 
 
 

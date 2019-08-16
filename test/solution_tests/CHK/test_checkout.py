@@ -42,6 +42,10 @@ def test_freebies():
     assert checkout_solution.checkout("ABCDE") == 155
     assert checkout_solution.checkout("ABCDEE") == 165
     assert checkout_solution.checkout("ACDEE") == 165
+    assert checkout_solution.checkout("ABBCDEE") == 195
+    assert checkout_solution.checkout("ABCDEEE") == 205
+    assert checkout_solution.checkout("ABCDEEEE") == 245
+
 
 
 
