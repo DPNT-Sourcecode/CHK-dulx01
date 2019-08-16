@@ -20,4 +20,9 @@ def test_valid_inputs():
     assert checkout_solution.checkout("AAAAAABBBCD") == 370
     assert checkout_solution.checkout("AAAAAABBBBCD") == 385
     assert checkout_solution.checkout("AAAAAABBBBCDD") == 400
-    assert checkout_solution.checkout("".join(random.shuffle("AAAAAABBBBCDD"))) == 400
+
+    x = list("AAAAAABBBBCDD")
+    random.shuffle(x)
+
+    assert checkout_solution.checkout("".join(x)) == 400
+
