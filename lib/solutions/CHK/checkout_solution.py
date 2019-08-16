@@ -11,7 +11,7 @@ PRICE_TABLE = {
     "H": 10,
     "I": 35,
     "J": 60,
-    "K": 80,
+    "K": 70,
     "L": 90,
     "M": 15,
     "N": 40,
@@ -19,14 +19,14 @@ PRICE_TABLE = {
     "P": 50,
     "Q": 30,
     "R": 50,
-    "S": 30,
+    "S": 20,
     "T": 20,
     "U": 40,
     "V": 50,
     "W": 20,
-    "X": 90,
-    "Y": 10,
-    "Z": 50,
+    "X": 17,
+    "Y": 20,
+    "Z": 21,
 }
 
 DEALS = {
@@ -42,7 +42,7 @@ DEALS = {
         (5, 45),
     ],
     "K": [
-        (2, 150),
+        (2, 120),
     ],
     "P": [
         (5, 200),
@@ -74,6 +74,11 @@ FREEBIES = {
     ]
 }
 
+GROUP_DEALS = [
+    ("STXYZ", 45),
+]
+
+
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
@@ -100,6 +105,9 @@ def checkout(skus):
                     if what in products:
                         products[what] = max(0, products[what] - free_units)
 
+    for group_deal, group_deal_price in GROUP_DEALS:
+        group_products = list(group_deal)
+
     for product, count in products.items():
         if product in DEALS:
             for deal_num, deal_price in DEALS[product]:
@@ -111,3 +119,4 @@ def checkout(skus):
         price += PRICE_TABLE[product] * count
 
     return price
+
