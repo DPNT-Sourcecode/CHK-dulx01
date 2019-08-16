@@ -45,8 +45,3 @@ def test_freebies():
     assert checkout_solution.checkout("ABBCDEE") == 195
     assert checkout_solution.checkout("ABCDEEE") == 205
     assert checkout_solution.checkout("ABCDEEEE") == 245
-
-
-
-
-
