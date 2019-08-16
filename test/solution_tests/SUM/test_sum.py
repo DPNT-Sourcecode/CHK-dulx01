@@ -30,5 +30,3 @@ def test_limit_values(limit_value, result):
 def test_sum():
     assert sum_solution.compute(1, 2) == 3
     assert sum_solution.compute(2, 1) == 3
-
-

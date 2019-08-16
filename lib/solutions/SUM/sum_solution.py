@@ -10,4 +10,3 @@ def compute(x, y):
         raise ValueError("Argument x isn't in the correct range")
 
     return x + y
-
