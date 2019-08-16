@@ -75,7 +75,7 @@ FREEBIES = {
 }
 
 GROUP_DEALS = [
-    ("STXYZ", 45),
+    ("STXYZ", 3, 45),  # buy three of STXYZ for 45
 ]
 
 
@@ -105,8 +105,20 @@ def checkout(skus):
                     if what in products:
                         products[what] = max(0, products[what] - free_units)
 
-    for group_deal, group_deal_price in GROUP_DEALS:
+    for group_deal, group_count, group_deal_price in GROUP_DEALS:
         group_products = list(group_deal)
+
+        # sort products from most expensive
+        group_products.sort(key=lambda x: PRICE_TABLE[x], reverse=True)
+
+        total_from_group = sum(products.get(k, 0) for k in group_products)
+
+        if total_from_group >= group_count:
+            deals = total_from_group // group_count
+            price += deals * group_deal_price
+            remove_products = deals * group_count
+
+
 
     for product, count in products.items():
         if product in DEALS:
@@ -119,4 +131,5 @@ def checkout(skus):
         price += PRICE_TABLE[product] * count
 
     return price
+
 
